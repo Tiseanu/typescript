@@ -14,7 +14,6 @@ const ToDos: React.FC<TypeValuesProps> = (props) => {
                 <ToDoItem key={k} name={item.text} />
             ))}
             {/* {props.items.map((item, k) => <li key={k}>{item}</li>)} */}
-
         </ul>
     );
 };
