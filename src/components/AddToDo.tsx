@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+
+import { ToDoContext } from "../store/todo-context";
 import style from './AddToDo.module.css';
 
-type TypeValuesProps = {
-    addTodoFct: (new_value:string) => void // return type is void - cause here we don't do anything with the returned value(not putting in a constant, not outputting the value) => void
-};
-
-const AddToDo: React.FC<TypeValuesProps> = (props) => {
+const AddToDo: React.FC = (props) => {
+    const contextProvider = useContext(ToDoContext);
     const addedInputItem = useRef<HTMLInputElement>(null); // the ref will be connected to an html input element - we have to set a default value: null
 
     const AddItem = (e: React.FormEvent) => {
@@ -16,7 +15,7 @@ const AddToDo: React.FC<TypeValuesProps> = (props) => {
             return;
         }
    
-        props.addTodoFct(enteredTxt);
+        contextProvider.AddToDoCtxFct(enteredTxt);
         addedInputItem.current!.value = '';
     }
 
