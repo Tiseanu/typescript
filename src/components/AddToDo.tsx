@@ -17,6 +17,7 @@ const AddToDo: React.FC<TypeValuesProps> = (props) => {
         }
    
         props.addTodoFct(enteredTxt);
+        addedInputItem.current!.value = '';
     }
 
     return (
