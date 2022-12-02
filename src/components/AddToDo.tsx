@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import style from './AddToDo.module.css';
 
 type TypeValuesProps = {
     addTodoFct: (new_value:string) => void // return type is void - cause here we don't do anything with the returned value(not putting in a constant, not outputting the value) => void
@@ -11,18 +12,18 @@ const AddToDo: React.FC<TypeValuesProps> = (props) => {
         e.preventDefault();
         // const enteredTxt = addedInputItem.current?.value; // ? signals to TS that it tries to access value and if succeeds - entered value will be stored into the const - if not: null will be the value of const - type inference: string | undefined
         const enteredTxt = addedInputItem.current!.value; // ! is you are sure there will be a new value to be stored into the const - type inference: string
-        if (enteredTxt && enteredTxt.length > 0) {
+        if (enteredTxt.trim().length === 0) {
             return;
         }
-
+   
         props.addTodoFct(enteredTxt);
-
     }
+
     return (
-        <form onSubmit={AddItem}>
+        <form className={style.form} onSubmit={AddItem}>
             <label htmlFor="itemInput">To do Text:</label>
             <input type="text" id="itemInput" ref={addedInputItem} />
-            <button type="submit">Add Item</button>
+            <button>Add Item</button>
         </form>
     );
 };

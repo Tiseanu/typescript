@@ -8,8 +8,8 @@ class ToDoInterface {
     text: string;
 
     constructor(toDoTxt: string) {
-        this.text= toDoTxt;
         this.id = new Date().toISOString();
+        this.text = toDoTxt;
     }
 }
 
